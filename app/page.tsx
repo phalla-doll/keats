@@ -262,11 +262,19 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-[#0a0a0a] text-white pt-20 pb-8 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-24">
             <div className="space-y-6">
-              <h4 className="text-[10px] uppercase tracking-widest text-gray-400">Menu</h4>
+              <h4 className="text-[10px] uppercase tracking-widest text-gray-400">Shop</h4>
               <ul className="space-y-4 text-sm font-serif">
-                <li><a href="#" className="hover:text-gray-300 transition-colors">Shop</a></li>
+                <li><a href="#" className="hover:text-gray-300 transition-colors">All Products</a></li>
+                <li><a href="#" className="hover:text-gray-300 transition-colors">The Hydrating Serum</a></li>
+                <li><a href="#" className="hover:text-gray-300 transition-colors">The Moisturising Cream</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <h4 className="text-[10px] uppercase tracking-widest text-gray-400">Our Values</h4>
+              <ul className="space-y-4 text-sm font-serif">
                 <li><a href="#" className="hover:text-gray-300 transition-colors">About</a></li>
                 <li><a href="#" className="hover:text-gray-300 transition-colors">What is Efficacy %?</a></li>
                 <li><a href="#" className="hover:text-gray-300 transition-colors">Sustainability</a></li>
@@ -274,7 +282,7 @@ export default function Home() {
             </div>
             
             <div className="space-y-6">
-              <h4 className="text-[10px] uppercase tracking-widest text-gray-400">How can we help?</h4>
+              <h4 className="text-[10px] uppercase tracking-widest text-gray-400">Support</h4>
               <ul className="space-y-4 text-sm font-serif">
                 <li><a href="#" className="hover:text-gray-300 transition-colors">Shipping & Returns</a></li>
                 <li><a href="#" className="hover:text-gray-300 transition-colors">Contact</a></li>
