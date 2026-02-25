@@ -1,7 +1,22 @@
+'use client';
+
 import Image from 'next/image';
 import { User, Search, ShoppingBag, ArrowRight } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function Home() {
+  const { scrollY } = useScroll();
+  
+  // Parallax transforms
+  const bgY = useTransform(scrollY, [0, 1000], [0, 200]);
+  const bgScale = useTransform(scrollY, [0, 1000], [1, 1.05]);
+  const heroY = useTransform(scrollY, [0, 500], [0, 100]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+  
+  const y1 = useTransform(scrollY, [0, 1000], [0, -80]);
+  const y2 = useTransform(scrollY, [0, 1000], [0, -180]);
+  const y3 = useTransform(scrollY, [0, 1000], [0, -40]);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top Banner */}
@@ -35,9 +50,26 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow relative overflow-hidden">
+        {/* Parallax Background Element */}
+        <motion.div 
+          style={{ y: bgY, scale: bgScale }}
+          className="absolute top-0 left-0 w-full h-[120vh] -z-10 opacity-[0.03] pointer-events-none origin-top"
+        >
+          <Image 
+            src="https://picsum.photos/seed/luxury-texture/1920/1080" 
+            alt="Background texture" 
+            fill 
+            className="object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
+
         {/* Hero Quote Section */}
-        <section className="py-24 md:py-32 px-6 text-center max-w-4xl mx-auto">
+        <motion.section 
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="py-24 md:py-32 px-6 text-center max-w-4xl mx-auto relative"
+        >
           <h1 className="font-serif text-4xl md:text-6xl leading-tight mb-8">
             &quot;A cashmere blanket for your epidermis&quot;
           </h1>
@@ -52,14 +84,14 @@ export default function Home() {
               Shop Skincare <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-        </section>
+        </motion.section>
 
         {/* Masonry/Grid Section */}
         <section className="px-6 pb-24 max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
             
             {/* Column 1 (Left) */}
-            <div className="md:col-span-3 space-y-16 pt-12 md:pt-48">
+            <motion.div style={{ y: y1 }} className="md:col-span-3 space-y-16 pt-12 md:pt-48">
               <div className="space-y-3">
                 <div className="relative aspect-square bg-black">
                   <Image 
@@ -97,10 +129,10 @@ export default function Home() {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Column 2 (Center) */}
-            <div className="md:col-span-5 space-y-16">
+            <motion.div style={{ y: y2 }} className="md:col-span-5 space-y-16">
               <div className="relative">
                 <div className="relative aspect-[4/5] bg-gray-100">
                   <Image 
@@ -135,10 +167,10 @@ export default function Home() {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Column 3 (Right) */}
-            <div className="md:col-span-4 space-y-16 pt-12 md:pt-24">
+            <motion.div style={{ y: y3 }} className="md:col-span-4 space-y-16 pt-12 md:pt-24">
               <div className="space-y-3">
                 <p className="text-xs font-serif italic text-gray-600">Mercy<br/>wears The Moisturising Cream</p>
                 <div className="relative aspect-[3/4] bg-black text-white p-8 flex flex-col justify-between">
@@ -183,7 +215,7 @@ export default function Home() {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </section>
